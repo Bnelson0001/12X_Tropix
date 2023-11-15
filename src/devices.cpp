@@ -10,13 +10,13 @@ bool gameLock = false;
 bool ptoOut = true;
 // this stuff is for example autos, you should get rid of this and add your own devices here
 
-pros::ADIDigitalOut lWing('G');
-pros::ADIDigitalOut rWing('H');
-pros::ADIDigitalOut lInt('A');
-pros::ADIDigitalOut rInt('B');
-pros::ADIDigitalOut pto ('F');
-pros::ADIDigitalOut lGLock ('D');
-pros::ADIDigitalOut rGLock ('E');
+pros::ADIDigitalOut lWing('C');
+pros::ADIDigitalOut rWing('D');
+pros::ADIDigitalOut lInt('E');
+pros::ADIDigitalOut rInt('F');
+pros::ADIDigitalOut pto ('G');
+pros::ADIDigitalOut lGLock ('B');
+pros::ADIDigitalOut rGLock ('A');
 
 // this stuff is for example autos, you should get rid of this and add your own devices here
 
@@ -30,15 +30,15 @@ pros::Motor shootmotor (10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODE
 pros::Motor leftFront(11, pros::E_MOTOR_GEARSET_06, false); 
 pros::Motor leftBack(12, pros::E_MOTOR_GEARSET_06, false); 
 pros::Motor leftTop(13, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor rightFront(18, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor rightBack(19, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor rightTop(20, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor rightFront(19, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor rightBack(20, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor rightTop(18, pros::E_MOTOR_GEARSET_06, true); 
 // DO NOT CHANGE NAMES
 
 pros::MotorGroup left_side_motors({leftFront, leftBack, leftTop});
 pros::MotorGroup right_side_motors({rightFront, rightFront, rightTop});
 
-pros::Imu inertial_sensor(2); 
+pros::Imu inertial_sensor(17); 
 pros::Rotation rotation_sensor(16);
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
