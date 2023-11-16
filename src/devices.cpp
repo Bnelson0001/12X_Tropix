@@ -27,9 +27,9 @@ pros::Motor shootmotor (10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODE
 
 // set up your motors here but try not to change the names
 // DO NOT CHANGE NAMES
-pros::Motor leftFront(11, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor leftBack(12, pros::E_MOTOR_GEARSET_06, false); 
-pros::Motor leftTop(13, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor leftFront(12, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor leftBack(13, pros::E_MOTOR_GEARSET_06, false); 
+pros::Motor leftTop(11, pros::E_MOTOR_GEARSET_06, false); 
 pros::Motor rightFront(19, pros::E_MOTOR_GEARSET_06, true); 
 pros::Motor rightBack(20, pros::E_MOTOR_GEARSET_06, true); 
 pros::Motor rightTop(18, pros::E_MOTOR_GEARSET_06, true); 
@@ -38,8 +38,8 @@ pros::Motor rightTop(18, pros::E_MOTOR_GEARSET_06, true);
 pros::MotorGroup left_side_motors({leftFront, leftBack, leftTop});
 pros::MotorGroup right_side_motors({rightFront, rightFront, rightTop});
 
-pros::Imu inertial_sensor(17); 
-pros::Rotation rotation_sensor(16);
+pros::Imu inertial_sensor(14); 
+pros::Rotation rotation_sensor(2);
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 

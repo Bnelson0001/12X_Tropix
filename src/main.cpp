@@ -103,9 +103,9 @@ bool shooterToggle = false;
  bool togglea = false;
  bool toggleR2 = false;
  bool toggleD = true;
- void resetsensor(){
-   rotation_sensor.setPosition(0, degree);
- }
+//  void resetsensor(){
+//    rotation_sensor.setPosition(0, degree);
+//  }
 
 void shootT() { shootToggle = !shootToggle; }
 void toggleShooter() { shooterHold = !shooterHold; }

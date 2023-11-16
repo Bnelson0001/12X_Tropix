@@ -26,6 +26,7 @@ extern pros::ADIDigitalOut rGLock;
 extern pros::ADIDigitalOut pto;
 
 extern pros::Rotation rotation_sensor;
+extern pros::IMU inertial_sensor;
 
 extern bool wingsOut;
 extern bool IntOut;
