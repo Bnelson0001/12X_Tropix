@@ -167,16 +167,19 @@ pros::Task h_task(half_task);
             // OPTIONAL: // adjust curve (DEFAULT IS 4.0):// <curve_value_here>
         );
         
-if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)){
+if(master.get_digital(DIGITAL_L2)){
   intake.move_voltage(12000); // 12 volts
+  
     }
-    else if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)){
+    else if(master.get_digital(DIGITAL_L1)){
         intake.move_voltage(-12000); // -12 volts
+        pros::Task::delay(20);
     }
     else{
         intake.move_voltage(0); // stop the motor
+        pros::Task::delay(20);
     }
-    
+
     if (master.get_digital(DIGITAL_R2)) {
 
             lWing.set_value(true);
@@ -208,6 +211,52 @@ if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)){
 }
 if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
 (downT);
+}
+
+
+if(!tranToggle){
+  // Assuming RGameLock and LGameLock are Digital Out ADI devices
+  rGLock.set_value(false);
+  lGLock.set_value(false);
+  pros::Task::delay(50);
+  // Assuming Tran is a Digital Out ADI device
+  pto.set_value(true);
+  pros::Task::delay(20);
+}
+else if(tranToggle){
+  pto.set_value(false);
+  if(toggleD){
+    rGLock.set_value(true);
+    lGLock.set_value(true);
+pros::Task::delay(20);
+  }
+  else if(!toggleD){
+    rGLock.set_value(false);
+    lGLock.set_value(false);
+  }
+  if(master.get_digital(DIGITAL_A)){
+    rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    rightTop.move_voltage(-8000); // 8 volts
+    leftTop.move_voltage(-8000); // 8 volts
+    pros::Task::delay(200);
+  }
+  else if(master.get_digital(DIGITAL_Y)){
+    rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    rightTop.move_voltage(8000); // 8 volts
+    leftTop.move_voltage(8000); // 8 volts
+    pros::Task::delay(200);
+  }
+  else{
+    rightTop.move_voltage(0); // stop the motor
+    leftTop.move_voltage(0); // stop the motor
+    pros::Task::delay(20);
+  }
+  }
+
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)){
+    togglePTO();
 }
 
 		pros::delay(10);
