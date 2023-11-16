@@ -126,26 +126,28 @@ void opcontrol() {
         );
         
         setIntakeMotor();
-    // if (master.get_digital(DIGITAL_R2)) {
-    //         lWings.set_value(true);
-    //         rWings.set_value(true);
-    //         lInt.set_value(false);
-    //         rInt.set_value(false);
-    //     } 
-    //     else if (master.get_digital(DIGITAL_UP)){
-    //         lInt.set_value(false);
-    //         rInt.set_value(false);
-    //     }
-    //      else if (master.get_digital(DIGITAL_RIGHT)){
-    //         lWings.set_value(true);
-    //         rWings.set_value(true);
-    //      }
-    //     else {
-    //         lWings.set_value(false);
-    //         rWings.set_value(false);
-    //         lInt.set_value(true);
-    //         rInt.set_value(true);
-    //     }
+    if (master.get_digital(DIGITAL_R2)) {
+
+            lWings.set_value(true);
+            rWings.set_value(true);
+            lInt.set_value(false);
+            rInt.set_value(false);
+        } 
+        else if (master.get_digital(DIGITAL_UP)){
+            lInt.set_value(false);
+            rInt.set_value(false);
+        }
+         else if (master.get_digital(DIGITAL_RIGHT)){
+            lWings.set_value(true);
+            rWings.set_value(true);
+         }
+        else {
+            lWings.set_value(false);
+            rWings.set_value(false);
+            lInt.set_value(true);
+            rInt.set_value(true);
+        }
+        
 
 		pros::delay(10);
 	}

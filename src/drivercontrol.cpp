@@ -43,13 +43,13 @@ double left_curve_function(double x, double left_curve_scale) {
 }
 
 void set_tank(int l_stick, int r_stick) {
-    leftFront.move_voltage((l_stick + r_stick) * (12000.0 / 127.0));
-    leftBack.move_voltage((l_stick + r_stick) * (12000.0 / 127.0));
-    leftTop.move_voltage((l_stick + r_stick)* (12000.0 / 127.0));
+    leftFront.move_voltage((-l_stick - r_stick) * (12000.0 / 127.0));
+    leftBack.move_voltage((-l_stick - r_stick) * (12000.0 / 127.0));
+    leftTop.move_voltage((-l_stick - r_stick)* (12000.0 / 127.0));
 
-    rightFront.move_voltage((l_stick - r_stick) * (12000.0 / 127.0));
-    rightBack.move_voltage((l_stick - r_stick)* (12000.0 / 127.0));
-    rightTop.move_voltage((l_stick - r_stick) * (12000.0 / 127.0));
+    rightFront.move_voltage((-l_stick + r_stick) * (12000.0 / 127.0));
+    rightBack.move_voltage((-l_stick + r_stick)* (12000.0 / 127.0));
+    rightTop.move_voltage((-l_stick + r_stick) * (12000.0 / 127.0));
 }
 
 void tank_drive(double curve) {
