@@ -60,15 +60,6 @@ void tank_drive(double curve) {
     set_tank(l_stick, r_stick);
 }
 
-void setintake(int power) {                  //Intake run forward/back 
-  intake = power;
-}
-
-
-void setIntakeMotor (){
-int intakepower = 127 * (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) - (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2));
-setintake(intakepower);
-}
 
 
 

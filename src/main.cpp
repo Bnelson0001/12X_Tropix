@@ -103,9 +103,9 @@ bool shooterToggle = false;
  bool togglea = false;
  bool toggleR2 = false;
  bool toggleD = true;
-//  void resetsensor(){
-//    rotation_sensor.setPosition(0, degree);
-//  }
+void resetsensor(){
+   rotation_sensor.reset_position();
+ }
 
 void shootT() { shootToggle = !shootToggle; }
 void toggleShooter() { shooterHold = !shooterHold; }
@@ -117,19 +117,70 @@ void togglebuttona() {togglea = !togglea;}
 void togglebuttonR2() {toggleR2 = !toggleR2;}
 void downT() {toggleD = !toggleD;}
 
+
+
+int cata_task() {
+  while(!halfToggle){
+    if((rotation_sensor.get_angle() >=288) || (rotation_sensor.get_angle()<=275)){
+      shootmotor.move_velocity(-80);
+    }
+    else if(auto_shoot){
+      shootmotor.move_velocity(-100);
+      pros::Task::delay(1000);
+      shootToggle = false;
+    }
+    else{
+      shootmotor.move(0);
+      shooterHold = true;
+    }
+    pros::Task::delay(20);
+  }
+  return 1;
+}
+
+int half_task() {
+  while(halfToggle){
+    if((rotation_sensor.get_angle()>=300) || (rotation_sensor.get_angle()<=290)){
+      shootmotor.move_velocity(-80);
+    }
+    else if(auto_shoot){
+      shootmotor.move_velocity(-100);
+      pros::Task::delay(1000);
+      shootToggle = false;
+    }
+    else{
+      shootmotor.move(0);
+      shooterHold = true;
+    }
+    pros::Task::delay(20);
+  }
+  return 1;
+}
+
+
 void opcontrol() {
     set_drive_to_coast();
-
+pros::Task shoot_task(cata_task);
+pros::Task h_task(half_task);
 	while (true) {
         tank_drive(  
             // OPTIONAL: // adjust curve (DEFAULT IS 4.0):// <curve_value_here>
         );
         
-        setIntakeMotor();
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L2)){
+  intake.move_voltage(12000); // 12 volts
+    }
+    else if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_L1)){
+        intake.move_voltage(-12000); // -12 volts
+    }
+    else{
+        intake.move_voltage(0); // stop the motor
+    }
+    
     if (master.get_digital(DIGITAL_R2)) {
 
-            lWings.set_value(true);
-            rWings.set_value(true);
+            lWing.set_value(true);
+            rWing.set_value(true);
             lInt.set_value(false);
             rInt.set_value(false);
         } 
@@ -138,16 +189,26 @@ void opcontrol() {
             rInt.set_value(false);
         }
          else if (master.get_digital(DIGITAL_RIGHT)){
-            lWings.set_value(true);
-            rWings.set_value(true);
+            lWing.set_value(true);
+            rWing.set_value(true);
          }
         else {
-            lWings.set_value(false);
-            rWings.set_value(false);
+            lWing.set_value(false);
+            rWing.set_value(false);
             lInt.set_value(true);
             rInt.set_value(true);
         }
-        
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)){
+  shooterToggle = true;
+  shootmotor.move_velocity(-100);
+  pros::Task::delay(2);
+}
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)){
+(halfT);
+}
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
+(downT);
+}
 
 		pros::delay(10);
 	}

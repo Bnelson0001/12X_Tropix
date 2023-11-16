@@ -17,8 +17,8 @@ extern pros::Motor leftBack;
 extern pros::Motor leftTop;
 
 
-extern pros::ADIDigitalOut lWings;
-extern pros::ADIDigitalOut rWings;
+extern pros::ADIDigitalOut lWing;
+extern pros::ADIDigitalOut rWing;
 extern pros::ADIDigitalOut lInt;
 extern pros::ADIDigitalOut rInt;
 extern pros::ADIDigitalOut lGLock;
