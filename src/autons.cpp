@@ -68,38 +68,40 @@ void leftSideQual() {
 
 // example auto for matchload elims
 // for video check: https://www.youtube.com/live/bE180c_xft8?si=eTFYuLUq1aH28cv-&t=37856
-void leftSideElims() {
-    chassis.setPose(-42.009, -55.484, 15); // X: 0, Y: 0, Heading: 0
 
-    chassis.follow(elimsLeftPath1_txt, 1000, 15, true);
-    intakeOn();
-    chassis.waitUntilDist(-1);
 
-    pros::delay(300);
+void leftSideElims() {}
+//     chassis.setPose(-42.009, -55.484, 15); // X: 0, Y: 0, Heading: 0
 
-    chassis.follow(elimsLeftPath2_txt, 1000, 15, true, false);
-    chassis.waitUntilDist(3);
-    intake = 0;
-    chassis.waitUntilDist(-1);
-    pros::delay(350);
+//     chassis.follow(elimsLeftPath1_txt, 1000, 15, true);
+//     // intakeOn();
+//     chassis.waitUntilDist(-1);
 
-    chassis.turnTo(0, -15, 1000);  
-    intakeReverse(); 
-    pros::delay(500); 
+//     pros::delay(300);
 
-    chassis.follow(elimsLeftPath3_txt, 1000, 15, true);
-    chassis.waitUntilDist(-1);
+//     chassis.follow(elimsLeftPath2_txt, 1000, 15, true, false);
+//     chassis.waitUntilDist(3);
+//     intake = 0;
+//     chassis.waitUntilDist(-1);
+//     pros::delay(350);
 
-    intake = 0;
+//     chassis.turnTo(0, -15, 1000);  
+//     intakeReverse(); 
+//     pros::delay(500); 
 
-    chassis.follow(elimsLeftPath4_txt, 1000, 15, true, false);
-    chassis.waitUntilDist(-1);
+//     chassis.follow(elimsLeftPath3_txt, 1000, 15, true);
+//     chassis.waitUntilDist(-1);
 
-    chassis.turnTo(0, -35, 1000);  
+//     intake = 0;
 
-    chassis.follow(elimsLeftPath5_txt, 1000, 15, true, false);
-    chassis.waitUntilDist(-1);
-}
+//     chassis.follow(elimsLeftPath4_txt, 1000, 15, true, false);
+//     chassis.waitUntilDist(-1);
+
+//     chassis.turnTo(0, -35, 1000);  
+
+//     chassis.follow(elimsLeftPath5_txt, 1000, 15, true, false);
+//     chassis.waitUntilDist(-1);
+// }
 
 void skills() {
     // tee hee hidden

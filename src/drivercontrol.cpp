@@ -60,7 +60,7 @@ void tank_drive(double curve) {
     set_tank(l_stick, r_stick);
 }
 
-void setintake (int power) {                  //Intake run forward/back 
+void setintake(int power) {                  //Intake run forward/back 
   intake = power;
 }
 
