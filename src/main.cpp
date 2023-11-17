@@ -238,14 +238,14 @@ pros::Task::delay(20);
     rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     rightTop.move_voltage(-8000); // 8 volts
-    leftTop.move_voltage(-8000); // 8 volts
+    leftTop.move_voltage(8000); // 8 volts
     pros::Task::delay(200);
   }
   else if(master.get_digital(DIGITAL_Y)){
     rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     rightTop.move_voltage(8000); // 8 volts
-    leftTop.move_voltage(8000); // 8 volts
+    leftTop.move_voltage(-8000); // 8 volts
     pros::Task::delay(200);
   }
   else{

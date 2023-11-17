@@ -20,7 +20,7 @@ pros::ADIDigitalOut rGLock ('A');
 
 // this stuff is for example autos, you should get rid of this and add your own devices here
 
-pros::Motor intake (1, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake (3, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor shootmotor (10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
 // this stuff is for example autos, you should get rid of this and add your own devices here
 
