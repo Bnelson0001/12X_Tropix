@@ -122,10 +122,10 @@ void downT() {toggleD = !toggleD;}
 int cata_task() {
   while(!halfToggle){
     if((rotation_sensor.get_angle() >=288) || (rotation_sensor.get_angle()<=275)){
-      shootmotor.move_velocity(-80);
+      shootmotor.move_velocity(80);
     }
     else if(auto_shoot){
-      shootmotor.move_velocity(-100);
+      shootmotor.move_velocity(100);
       pros::Task::delay(1000);
       shootToggle = false;
     }
@@ -141,10 +141,10 @@ int cata_task() {
 int half_task() {
   while(halfToggle){
     if((rotation_sensor.get_angle()>=300) || (rotation_sensor.get_angle()<=290)){
-      shootmotor.move_velocity(-80);
+      shootmotor.move_velocity(80);
     }
     else if(auto_shoot){
-      shootmotor.move_velocity(-100);
+      shootmotor.move_velocity(100);
       pros::Task::delay(1000);
       shootToggle = false;
     }
@@ -204,7 +204,8 @@ if(master.get_digital(DIGITAL_L2)){
 if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)){
   shooterToggle = true;
   shootmotor.move_velocity(-100);
-  pros::Task::delay(2);
+  pros::Task::delay(200);
+  shootmotor.move_velocity(0);
 }
 if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)){
 (halfT);

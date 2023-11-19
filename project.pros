@@ -351,10 +351,10 @@
       }
     },
     "upload_options": {
-      "icon": "ufo",
+      "icon": "X",
       "description": "First Draft",
-      "after": "run",
-      "slot": 2
+      "after": "screen",
+      "slot": 4
     }
   }
 }
