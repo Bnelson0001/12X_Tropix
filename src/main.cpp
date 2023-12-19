@@ -103,6 +103,9 @@ bool shooterToggle = false;
  bool togglea = false;
  bool toggleR2 = false;
  bool toggleD = true;
+ bool toggleB = false;
+ bool toggleLock = false;
+
 void resetsensor(){
    rotation_sensor.reset_position();
  }
@@ -116,6 +119,8 @@ void togglebuttonb() {toggleb = !toggleb;}
 void togglebuttona() {togglea = !togglea;}
 void togglebuttonR2() {toggleR2 = !toggleR2;}
 void downT() {toggleD = !toggleD;}
+void togB() {toggleB = ! toggleB;}
+void togL() {toggleLock = !toggleLock;}
 
 
 
@@ -187,7 +192,7 @@ if(master.get_digital(DIGITAL_L2)){
             lInt.set_value(false);
             rInt.set_value(false);
         } 
-        else if (master.get_digital(DIGITAL_UP)){
+        else if (toggleB){
             lInt.set_value(false);
             rInt.set_value(false);
         }
@@ -215,55 +220,74 @@ if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
 }
 
 
-if(!tranToggle){
-  // Assuming RGameLock and LGameLock are Digital Out ADI devices
-  rGLock.set_value(false);
-  lGLock.set_value(false);
-  pros::Task::delay(50);
-  // Assuming Tran is a Digital Out ADI device
-  pto.set_value(true);
-  pros::Task::delay(20);
-}
-else if(tranToggle){
-  pto.set_value(false);
-  if(toggleD){
+// if(!tranToggle){
+//   // Assuming RGameLock and LGameLock are Digital Out ADI devices
+//   rGLock.set_value(false);
+//   lGLock.set_value(false);
+//   pros::Task::delay(50);
+//   // Assuming Tran is a Digital Out ADI device
+//   pto.set_value(true);
+//   pros::Task::delay(20);
+// }
+// else if(tranToggle){
+//   pto.set_value(false);
+//   if(toggleD){
+//     rGLock.set_value(true);
+//     lGLock.set_value(true);
+// pros::Task::delay(20);
+//   }
+  // else if(!toggleD){
+  //   rGLock.set_value(false);
+  //   lGLock.set_value(false);
+  // }
+  if(master.get_digital(DIGITAL_A)){
+    pto.set_value(false);
     rGLock.set_value(true);
     lGLock.set_value(true);
-pros::Task::delay(20);
-  }
-  else if(!toggleD){
-    rGLock.set_value(false);
-    lGLock.set_value(false);
-  }
-  if(master.get_digital(DIGITAL_A)){
     rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    rightTop.move_voltage(-8000); // 8 volts
+    rightTop.move_voltage(8000); // 8 volts
     leftTop.move_voltage(8000); // 8 volts
     pros::Task::delay(200);
   }
   else if(master.get_digital(DIGITAL_Y)){
+    pto.set_value(false);
+    rGLock.set_value(true);
+    lGLock.set_value(true);
     rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    rightTop.move_voltage(8000); // 8 volts
+    rightTop.move_voltage(-8000); // 8 volts
     leftTop.move_voltage(-8000); // 8 volts
+    pros::Task::delay(200);
+  }
+  else if (toggleLock){
+    rightTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    leftTop.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    rightTop.move_voltage(0); // 8 volts
+    leftTop.move_voltage(0); // 8 volts
+     pto.set_value(false);
+    rGLock.set_value(false);
+    lGLock.set_value(false);
     pros::Task::delay(200);
   }
   else{
     rightTop.move_voltage(0); // stop the motor
     leftTop.move_voltage(0); // stop the motor
     pros::Task::delay(20);
+     pto.set_value(true);
+    rGLock.set_value(false);
+    lGLock.set_value(false);
   }
   }
 
-if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)){
-    togglePTO();
+if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
+    togL();
 }
 
 		pros::delay(10);
 	}
 
-}
+//}
 
 
 

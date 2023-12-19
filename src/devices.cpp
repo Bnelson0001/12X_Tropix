@@ -12,15 +12,15 @@ bool ptoOut = true;
 
 pros::ADIDigitalOut lWing('C');
 pros::ADIDigitalOut rWing('D');
-pros::ADIDigitalOut lInt('E');
-pros::ADIDigitalOut rInt('F');
+pros::ADIDigitalOut lInt('F');
+pros::ADIDigitalOut rInt('E');
 pros::ADIDigitalOut pto ('G');
 pros::ADIDigitalOut lGLock ('B');
 pros::ADIDigitalOut rGLock ('A');
 
 // this stuff is for example autos, you should get rid of this and add your own devices here
 
-pros::Motor intake (3, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake (7, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor shootmotor (10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
 // this stuff is for example autos, you should get rid of this and add your own devices here
 
@@ -32,7 +32,7 @@ pros::Motor leftBack(13, pros::E_MOTOR_GEARSET_06, false);
 pros::Motor leftTop(11, pros::E_MOTOR_GEARSET_06, false); 
 pros::Motor rightFront(19, pros::E_MOTOR_GEARSET_06, true); 
 pros::Motor rightBack(20, pros::E_MOTOR_GEARSET_06, true); 
-pros::Motor rightTop(18, pros::E_MOTOR_GEARSET_06, true); 
+pros::Motor rightTop(17, pros::E_MOTOR_GEARSET_06, true); 
 // DO NOT CHANGE NAMES
 
 pros::MotorGroup left_side_motors({leftFront, leftBack, leftTop});
