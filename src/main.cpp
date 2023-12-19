@@ -105,6 +105,7 @@ bool shooterToggle = false;
  bool toggleD = true;
  bool toggleB = false;
  bool toggleLock = false;
+ bool test = true;
 void resetsensor(){
    rotation_sensor.reset_position();
  }
